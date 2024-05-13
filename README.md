@@ -41,15 +41,13 @@ Check out the live demo of the product dashboard [Here](https://product-dashboar
 To run the project locally, follow these steps:
 
 1. 🧪 Clone the repository: `git@github.com:mahmoud-saeed1/product-dashboard.git`
-2. 📂 Navigate to the project directory: `cd product-dashboard`
-3. 📦 Install the dependencies: `npm install`
-4. ▶️ Start the application: `npm run dev`
-5. 🌐 Open your browser and visit: `http://localhost:3000`
+2. 📦 Install the dependencies: `npm install`
+3. ▶️ Start the application: `npm run dev`
+4. 🌐 Open your browser and visit: `http://localhost:3000`
 
 Now you can start exploring the Product Dashboard and perform CRUD operations on your products. Enjoy! 🎉
 
-## Contributing 🤝
+## Credit
 
-Contributions are welcome! If you have any suggestions, bug reports, or feature requests, please open an issue or submit a pull request. Let's collaborate and make the Product Dashboard even better! 🙌
-
-Thank you for using the Product Dashboard and for your contributions. Together, we can create an exceptional frontend experience! 💫
+This project is an open source project that was made by mahmoud-saeed1, and I have used it and customized it for my project.
+it's an amazing job by him as I learned a lot from his folder structuring and all the design decisions that he made.
