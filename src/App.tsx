@@ -3,7 +3,7 @@ import { ChangeEvent, FormEvent, useEffect, useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import ProductCard from './components/ProductCard'
-import { categories,  formInputsList } from './data'
+import { categories, formInputsList } from './data'
 import Modal from './ui/Modal'
 import Button from './ui/Button'
 import Input from './ui/Input'
@@ -44,7 +44,7 @@ function App() {
     imageURL: '',
     price: '',
     state: '',
-    brand: ''
+    brand: '',
   })
   const [selectedCategory, setSelectedCategory] = useState(categories[0])
   const [productIndex, setProductIndex] = useState<number>(0)
@@ -56,9 +56,9 @@ function App() {
       method: 'GET',
     }
 
-    sendData<IProduct[]>('products', options, (res, err) => {
+    sendData<{ products: IProduct }[]>('products', options, (res, err) => {
       if (!err && res) {
-        setProducts(res)
+        setProducts(res?.products)
       }
     })
   }, [sendData])
@@ -175,6 +175,8 @@ function App() {
       [name]: files,
     })
 
+    console.log(files, name)
+
     setErrors({
       ...errors,
       [name]: '',
@@ -210,10 +212,7 @@ function App() {
       state,
       brand,
     })
-    // for (const key in product) {
-    //   console.log(key)
-    //   formData.append(key, product[key])
-    // }
+
     formData.append('title', title)
     formData.append('description', description)
     formData.append('price', price)
@@ -300,7 +299,7 @@ function App() {
       return
     }
     formData.append('title', editedProduct.title)
-    formData.append('imageURl', editedProduct.imageURL)
+    formData.append('imageURl', editedProduct.imageURL[0])
     formData.append('description', editedProduct.description)
     formData.append('price', editedProduct.price)
     formData.append('category', JSON.stringify(editedProduct.category))
@@ -382,44 +381,6 @@ function App() {
       <ErrorMessage message={errors[input.name]} />
     </div>
   ))
-
-  // const renderProductColor = colors.map((color) => (
-  //   <ColorCircle
-  //     key={color}
-  //     color={color}
-  //     onClick={() => {
-  //       // tempColorCircle.includes(color) ? tempColorCircle.filter(item => item !== color) : setTempColorCircle(prev => [...prev, color])
-  //       if (tempColorCircle.includes(color)) {
-  //         setTempColorCircle((prev) => prev.filter((item) => item !== color))
-  //         return
-  //       }
-  //       if (editProduct.colors.includes(color)) {
-  //         setTempColorCircle((prev) => prev.filter((item) => item !== color))
-  //         const updatedTempColors = editProduct.colors.filter(
-  //           (item) => item !== color
-  //         )
-  //         const updatedEditedProductColor = {
-  //           ...editProduct,
-  //           colors: updatedTempColors,
-  //         }
-  //         setEditProduct(updatedEditedProductColor)
-  //         return
-  //       }
-  //       setIsTempColorCircle(true)
-  //       setTempColorCircle((prev) => [...prev, color])
-  //     }}
-  //   />
-  // ))
-
-  // const renderTempCircleColor = tempColorCircle.map((color) => (
-  //   <span
-  //     key={color}
-  //     className='inline-block p-1 rounded-lg text-xs md:text-smF'
-  //     style={{ backgroundColor: color }}
-  //   >
-  //     {color}
-  //   </span>
-  // ))
 
   const renderFormInputsWhileEditing = (
     id: string,

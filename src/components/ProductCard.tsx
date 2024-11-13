@@ -48,7 +48,7 @@ const ProductCard = ({
       {/*~~~~~~~~$ product image $~~~~~~~~*/}
       <div className='h-72'>
         <Image
-          src={import.meta.env.VITE_SERVER_API + product.imageURL}
+          src={product.imageURL}
           className='object-cover rounded-md'
           alt='product image'
         />
